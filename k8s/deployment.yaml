@@ -5,7 +5,7 @@ metadata:
   labels:
     app: kubernetes-demo-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: kubernetes-demo-api
@@ -15,31 +15,26 @@ spec:
         app: kubernetes-demo-api
     spec:
       containers:
-        - name: kubernetes-demo-api
-          image: lior114452/kubernetes-demo-api:latest
+        - name: api
+          image: your-dockerhub-user/your-image:tag
           ports:
             - containerPort: 3000
-          env:
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
           resources:
             requests:
               cpu: "100m"
               memory: "128Mi"
             limits:
+              cpu: "250m"
               memory: "256Mi"
-              cpu: "500m"
-            readinessProbe:
-              httpGet:
-                path: /readyz
-                port: 3000
-              initialDelaySeconds: 5
-              periodSeconds: 10
-            livenessProbe:
-              httpGet:
-                path: /healthz
-                port: 3000
-              initialDelaySeconds: 5
-              periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 10
