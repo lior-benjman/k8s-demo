@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-demo-api
+  labels:
+    app: kubernetes-demo-api
+spec:
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: kubernetes-demo-api
+  type: NodePort # change to LoadBalancer if using a cloud provider
