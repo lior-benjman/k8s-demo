@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/apps/v1@deployment": "file:///c%3A/Users/liorbj/Documents/GitHub/k8s-demo/k8s/deployment.yaml"
+    }
+}
