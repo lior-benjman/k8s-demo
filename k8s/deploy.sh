@@ -1,6 +1,6 @@
 set -e
 
-NAME="kubernetes-demo-api"
+NAME="k8s-demo-api"
 USERNAME="lior114452"
 IMAGE="$USERNAME/$NAME:0.1.0"
 
