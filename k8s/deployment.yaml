@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-demo-api
+  name: kubernetes-demo-api
   labels:
-    app: k8s-demo-api
+    app: kubernetes-demo-api
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: k8s-demo-api
+      app: kubernetes-demo-api
   template:
     metadata:
       labels:
-        app: k8s-demo-api
+        app: kubernetes-demo-api
     spec:
       containers:
-        - name: k8s-demo-api
+        - name: kubernetes-demo-api
           image: lior114452/k8s-demo-api:0.1.0
           ports:
             - containerPort: 3000
